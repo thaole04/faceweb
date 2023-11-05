@@ -10,9 +10,16 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.26.1",
+    "@clerk/themes": "^1.7.9",
+    "@uploadthing/react": "^5.7.0",
+    "child_process": "^1.0.2",
+    "firebase": "^10.5.2",
+    "mongoose": "^8.0.0",
     "next": "14.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^5.7.4"
   },
   "devDependencies": {
     "@types/node": "^20",
