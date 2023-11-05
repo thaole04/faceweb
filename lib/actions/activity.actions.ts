@@ -7,7 +7,7 @@ import { connectToDB } from '../mongoose';
 
 export const getActivities = async () => {
   try {
-    // connectToDB();
+    connectToDB();
     const activities = await Activities.find();
     return activities;
   } catch (error: any) {
@@ -16,7 +16,7 @@ export const getActivities = async () => {
 };
 export const getControls = async () => {
   try {
-    // connectToDB();
+    connectToDB();
     const controls = await Control.find();
     return controls;
   } catch (error: any) {
@@ -26,7 +26,7 @@ export const getControls = async () => {
 
 export const createActivity = async (activity: any) => {
   try {
-    // connectToDB();
+    connectToDB();
     const newActivity = await Activities.create(activity);
     return newActivity;
   } catch (error: any) {
@@ -36,7 +36,7 @@ export const createActivity = async (activity: any) => {
 
 export const createControl = async (control: any) => {
   try {
-    // connectToDB();
+    connectToDB();
     const newControl = await Control.create(control);
     return newControl;
   } catch (error: any) {
