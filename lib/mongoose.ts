@@ -15,7 +15,10 @@ export const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URL, {});
+    await mongoose.connect(
+      'mongodb+srv://thaole04:041003@facerecognition.tcpw49j.mongodb.net/mydatabase?retryWrites=true&w=majority',
+      {}
+    );
 
     isConnected = true; // Set the connection status to true
     console.log('MongoDB connected');
