@@ -11,13 +11,13 @@ function UserCard({ id, name, image }: UserCardProps) {
   return (
     <article className='user-card'>
       <div className='user-card_avatar'>
-        <div className='relative h-12 w-12'>
+        <div className='relative h-18 w-18'>
           <Image
             src={image}
             alt='user_logo'
             className='rounded-full object-cover'
-            width={48}
-            height={48}
+            width={78}
+            height={78}
           />
         </div>
 

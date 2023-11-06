@@ -3,7 +3,7 @@ import { getUsersByModel } from '@/lib/actions/user.actions';
 async function Page() {
   const res = await getUsersByModel();
   return (
-    <div>
+    <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3'>
       {
         // @ts-ignore
         res.map((user: any) => {
