@@ -12,7 +12,7 @@ const LeftSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <section className='custom-scrollbar leftsidebar'>
+    <section className='custom-scrollbar leftsidebar z-[100]'>
       <div className='flex w-full flex-1 flex-col gap-6 px-6'>
         {sidebarLinks.map((link) => {
           const isActive =
@@ -40,10 +40,10 @@ const LeftSidebar = () => {
 
       <div className='mt-10 px-6'>
         <SignedIn>
-          <SignOutButton signOutCallback={() => router.push('/')}>
+          <SignOutButton signOutCallback={() => router.push('/sign-in')}>
             <div className='flex cursor-pointer gap-4 p-4'>
               <Image
-                src='/assets/logout.svg'
+                src='/logout.svg'
                 alt='logout'
                 width={24}
                 height={24}

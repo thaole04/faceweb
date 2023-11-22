@@ -1,28 +1,21 @@
-import { getActivities } from '@/lib/actions/activity.actions';
-
-import ActivityCard from '@/components/cards/ActivityCard';
-
-async function Page() {
-  const res = await getActivities();
-  // Đảo ngược thứ tự các phần tử trong mảng
-  res.reverse();
+import { getActivities, fetchActivity } from '@/lib/actions/activity.actions';
+import { getUsersByModel } from '@/lib/actions/user.actions';
+import ListActivities from '@/components/ListActivities';
+async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
+  const users = await getUsersByModel();
+  const activities = await getActivities();
+  const activitiesByUser = await fetchActivity('thaole04');
+  activities.reverse();
   return (
-    <div className='grid grid-cols-1 gap-3'>
-      {
-        // @ts-ignore
-        res.map((activity: any) => {
-          return (
-            <ActivityCard
-              key={activity.id}
-              time={activity.time}
-              date={activity.date}
-              name={activity.name}
-              image={activity.image}
-            />
-          );
-        })
-      }
-    </div>
+    <ListActivities
+      key={'1'}
+      activities={activities}
+      users={users}
+    />
   );
 }
 export default Page;

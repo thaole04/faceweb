@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 function TopSideBar() {
   return (
-    <nav className='topbar'>
+    <nav className='topbar z-[101]'>
       <Link
         href='/'
         className='flex items-center gap-4'
       >
         <Image
-          src='/assets/logo.svg'
+          src='/logo.svg'
           alt='logo'
           width={28}
           height={28}
@@ -30,7 +30,7 @@ function TopSideBar() {
             <SignOutButton>
               <div className='flex cursor-pointer'>
                 <Image
-                  src='/assets/logout.svg'
+                  src='/logout.svg'
                   alt='logout'
                   width={24}
                   height={24}

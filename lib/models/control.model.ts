@@ -9,8 +9,16 @@ const controlSchema = new Schema({
     type: String,
     required: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   type: {
     type: String,
+    required: true,
+  },
+  executed: {
+    type: Boolean,
     required: true,
   },
 });

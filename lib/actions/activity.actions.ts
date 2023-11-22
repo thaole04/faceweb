@@ -43,3 +43,13 @@ export const createControl = async (control: any) => {
     throw new Error(error);
   }
 };
+
+export const fetchActivity = async (username: string) => {
+  try {
+    connectToDB();
+    const activity = await Activities.findOne({ username: username });
+    return activity;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};

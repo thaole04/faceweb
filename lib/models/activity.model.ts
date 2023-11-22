@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-const activitieSchema = new Schema({
+const activitiesSchema = new Schema({
   time: {
     type: String,
     required: true,
@@ -9,7 +9,7 @@ const activitieSchema = new Schema({
     type: String,
     required: true,
   },
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -17,9 +17,13 @@ const activitieSchema = new Schema({
     type: String,
     required: true,
   },
+  secured: {
+    type: Boolean,
+    required: true,
+  }
 });
 
 const Activities =
-  mongoose.models.Activities || mongoose.model('Activities', activitieSchema);
+  mongoose.models.Activities || mongoose.model('Activities', activitiesSchema);
 
 export default Activities;
