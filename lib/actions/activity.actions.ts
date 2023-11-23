@@ -1,4 +1,5 @@
 'use server';
+
 // export async function
 import Activities from '../models/activity.model';
 import Control from '../models/control.model';
@@ -9,11 +10,37 @@ export const getActivities = async () => {
   try {
     connectToDB();
     const activities = await Activities.find();
-    return activities;
+    return JSON.parse(JSON.stringify(activities));
   } catch (error: any) {
     throw new Error(error);
   }
 };
+
+export const getActivitiesByUsername = async (username: string) => {
+  try {
+    connectToDB();
+    if (username === '') {
+      const activities = await Activities.find();
+      activities.reverse();
+      return JSON.parse(JSON.stringify(activities));
+    } else if (username === 'unknown') {
+      const activities = await Activities.find({
+        username: username,
+      });
+      activities.reverse();
+      return JSON.parse(JSON.stringify(activities));
+    } else {
+      const activities = await Activities.find({
+        username: username,
+      });
+      activities.reverse();
+      return JSON.parse(JSON.stringify(activities));
+    }
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
 export const getControls = async () => {
   try {
     connectToDB();
@@ -39,16 +66,6 @@ export const createControl = async (control: any) => {
     connectToDB();
     const newControl = await Control.create(control);
     return newControl;
-  } catch (error: any) {
-    throw new Error(error);
-  }
-};
-
-export const fetchActivity = async (username: string) => {
-  try {
-    connectToDB();
-    const activity = await Activities.findOne({ username: username });
-    return activity;
   } catch (error: any) {
     throw new Error(error);
   }

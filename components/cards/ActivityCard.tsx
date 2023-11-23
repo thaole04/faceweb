@@ -15,7 +15,7 @@ function ActivityCard({ time, date, name, image, secured }: ActivityProps) {
     <div className='activity-card'>
       {display && (
         <div
-          className='w-full h-full flex items-center justify-center fixed top-0 z-10 bg-opacity-70 bg-slate-900 cursor-pointer'
+          className='w-full h-full flex items-center justify-center fixed top-0 left-0 z-10 bg-opacity-70 bg-slate-900 cursor-pointer'
           onClick={() => {
             setDisplay(!display);
           }}
@@ -45,7 +45,9 @@ function ActivityCard({ time, date, name, image, secured }: ActivityProps) {
       </div>
       <div className='flex-1 text-ellipsis flex-col'>
         <h4 className='text-base-semibold text-light-1 mb-2'>Name: {name}</h4>
-        <p className='text-small-medium text-gray-1'>Time: {time}</p>
+        <p className='text-small-medium text-gray-1'>
+          Time: {time.replaceAll('-', ':')}
+        </p>
         <p className='text-small-medium text-gray-1'>Date: {date}</p>
       </div>
       <div>

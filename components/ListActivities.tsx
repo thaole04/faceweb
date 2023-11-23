@@ -1,5 +1,7 @@
+'use client';
 import ActivityCard from '@/components/cards/ActivityCard';
 import ButtonReload from '@/components/ButtonReload';
+import DropBar from './Dropbar';
 interface Props {
   activities: any;
   users: any;
@@ -8,7 +10,12 @@ interface Props {
 async function ListActivities({ activities, users }: Props) {
   return (
     <div className='flex flex-col'>
-      <div className='text-light-1 mb-2'>
+      <div className='flex flex-row mb-2 justify-between'>
+        <DropBar
+          key={'1'}
+          routeType='activity'
+          options={users}
+        />
         <ButtonReload />
       </div>
       <div className='grid grid-cols-1 gap-3'>
@@ -21,7 +28,7 @@ async function ListActivities({ activities, users }: Props) {
             );
             return (
               <ActivityCard
-                key={activity.id}
+                key={activity._id}
                 time={activity.time}
                 date={activity.date}
                 name={user?.name || 'Unknown'}

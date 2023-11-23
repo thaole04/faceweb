@@ -8,7 +8,7 @@ export const getUsersByModel = async () => {
   try {
     connectToDB();
     const result = await Users.find({});
-    return result;
+    return JSON.parse(JSON.stringify(result));
   } catch (error: any) {
     throw new Error(error);
   }
