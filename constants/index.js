@@ -15,7 +15,7 @@ export const sidebarLinks = [
     label: 'Users',
   },
   {
-    imgURL: '/create.svg',
+    imgURL: '/person-plus-fill.svg',
     route: '/add-user',
     label: 'Add User',
   },
