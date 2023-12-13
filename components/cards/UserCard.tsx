@@ -15,7 +15,7 @@ interface UserCardProps {
 function UserCard({ username, name, image }: UserCardProps) {
   const [deleteUser, setDeleteUser] = useState(false);
   return (
-    <article className='user-card h-64 justify-between gap-6'>
+    <article className='user-card h-64 justify-between gap-6 pt-3'>
       <div className='user-card_avatar w-24 items-center justify-center'>
         <div className='relative items-center justify-center'>
           <Image
@@ -87,7 +87,7 @@ function UserCard({ username, name, image }: UserCardProps) {
       </div>
       <div>
         {deleteUser && (
-          <div className='w-screen h-screen fixed top-0 left-0 z-10 flex justify-center items-center overflow-hidden  bg-opacity-50 bg-slate-950'>
+          <div className='w-screen h-screen fixed top-0 left-0 z-10 flex justify-center items-center overflow-hidden  bg-opacity-50 bg-slate-950 backdrop-blur-sm'>
             <div className='flex flex-col w-3/5 max-w-sm bg-slate-700 h-2/5 max-h-40 items-center justify-center rounded-lg'>
               <p className='text-light-1 text-center'>
                 Are you sure you want to delete {name}? This action cannot be

@@ -37,7 +37,7 @@ const LineChart = (activities: any) => {
     const name = activity.username;
     const indexName = NameData.findIndex((item) => item.name === name);
     if (indexName === -1) {
-      NameData.push({ name, number: 0 });
+      NameData.push({ name, number: 1 });
     } else {
       NameData[indexName].number += 1;
     }
@@ -66,13 +66,19 @@ const LineChart = (activities: any) => {
   NameData.splice(index, 1);
   const labelsBar = NameData.map((item) => item.name);
   const dataNumber = NameData.map((item) => item.number);
+  const [dateToDraw, setDateToDraw] = React.useState(2);
+  const maxDataDraw = labelsLine.length - 1;
+  // delete data before dateToDraw in DateData and labelsLine
+  const dataAcceptDraw = dataAccept.slice(dateToDraw);
+  const dataDeniedDraw = dataDenied.slice(dateToDraw);
+  const labelsLineDraw = labelsLine.slice(dateToDraw);
   // Dữ liệu biểu đồ
   const dataLine = {
-    labels: labelsLine,
+    labels: labelsLineDraw,
     datasets: [
       {
         label: 'Accept',
-        data: dataAccept,
+        data: dataAcceptDraw,
         fill: false,
         borderColor: 'rgb(0, 255, 0)',
         backgroundColor: 'rgba(0, 255, 0, 0.5)',
@@ -80,7 +86,7 @@ const LineChart = (activities: any) => {
       },
       {
         label: 'Denied',
-        data: dataDenied,
+        data: dataDeniedDraw,
         fill: false,
         borderColor: 'rgb(255, 0, 0)',
         backgroundColor: 'rgba(255, 0, 0, 0.5)',
@@ -119,7 +125,7 @@ const LineChart = (activities: any) => {
         },
       },
       y: {
-        // beginAtZero: true,
+        beginAtZero: true,
         grid: {
           display: true,
           color: '#333',
@@ -201,9 +207,9 @@ const LineChart = (activities: any) => {
   const totalAccept = dataAccept.reduce((a, b) => a + b, 0);
   const totalDenied = dataDenied.reduce((a, b) => a + b, 0);
   // The date with the most activity
-  const max = Math.max(...dataAccept);
-  const indexMax = dataAccept.findIndex((item) => item === max);
-  const dateMax = labelsLine[indexMax];
+  // const max = Math.max(...dataAccept);
+  // const indexMax = dataAccept.findIndex((item) => item === max);
+  // const dateMax = labelsLine[indexMax];
   return (
     <div className='h-[64rem] grid grid-rows-12 grid-cols-1 grid-flow-row gap-4 md:h-[36rem] md:grid-rows-5 md:grid-cols-6'>
       <div className='row-span-3 col-span-1 bg-dark-4 rounded-md md:row-span-4 md:col-span-3'>
@@ -229,6 +235,24 @@ const LineChart = (activities: any) => {
         />
       </div>
       <div className='row-span-1 col-span-1 bg-dark-4 rounded-md flex justify-center items-center gap-2 p-2'>
+        <button
+          onClick={() => {
+            setDateToDraw(
+              dateToDraw + 1 > maxDataDraw ? maxDataDraw : dateToDraw + 1
+            );
+          }}
+        >
+          <Image
+            src='/right-arrow.svg'
+            alt='true'
+            width={24}
+            height={24}
+            style={{
+              transform: 'rotate(180deg)',
+              filter: 'invert(1)',
+            }}
+          />
+        </button>
         <Image
           src='/date.svg'
           alt='true'
@@ -236,7 +260,21 @@ const LineChart = (activities: any) => {
           width={36}
           height={36}
         />
-        <p className='text-light-1'>{dateMax}</p>
+        <button
+          onClick={() => {
+            setDateToDraw(dateToDraw - 1 < 1 ? 1 : dateToDraw - 1);
+          }}
+        >
+          <Image
+            src='/right-arrow.svg'
+            alt='true'
+            width={24}
+            height={24}
+            style={{
+              filter: 'invert(1)',
+            }}
+          />
+        </button>
       </div>
       <div className='row-span-1 col-span-1 bg-dark-4 rounded-md flex justify-center items-center gap-2 p-2'>
         <Image
